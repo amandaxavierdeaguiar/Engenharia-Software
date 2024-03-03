@@ -8,21 +8,18 @@ lista = list()
 
 while True:
     dados['nome'] = str(input('Digite o nome do aluno:'))
-    dados['media'] = int(input(f'Digite a média da(o) {dados["nome"]}:'))
+    dados['media'] = float(input(f'Digite a média da(o) {dados["nome"]}:'))
+    dados["situação"] = "Aprovado" if dados["media"] >= 9.5 else "Reprovado"
+
     lista.append(dados.copy())
+    print(dados)
+
     continuar = str(input('Deseja continuar?[S/N]')).lower()
 
-    while continuar != 's':
+    if continuar != 's':
+        print("\n--- Lista de Alunos ---\n")
         for e in lista:
-            for k, v in e.items():
-                if dados['media'] >= 9.5:
-                    dados['situacao'] = 'Aprovado'
-                    print(f"O aluno {dados['nome']}, teve a média {dados['media']} e sua situação é {dados['situacao']}")    
-                    break
-                           
-                elif dados['media'] < 9.5:
-                    dados['situacao'] = 'Reprovado'
-                    print(f"O aluno {v}, teve a média {k} e sua situação é {dados['situacao']}")
-                    break                 
+            for k in e.items():
+                print(k)
         break
 
